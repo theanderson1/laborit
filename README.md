@@ -50,6 +50,40 @@ Fluxo principal:
 ```
 
 ---
+### Diagrama de Arquitetura
+
+```mermaid
+flowchart TD
+    Client[Client / Swagger / Postman]
+    Controller[analytics.controller.ts]
+    Service[analytics.service.ts]
+
+    Prompt[prompt.ts]
+    LLM[LLM via OpenRouter]
+    SQLGen[sql.generator.ts]
+    SQLValidator[sql.validator.ts]
+
+    Executor[query.executor.ts]
+    DB[(MySQL - Northwind)]
+
+    Client -->|POST /analytics/query| Controller
+    Controller --> Service
+
+    Service --> Prompt
+    Prompt --> LLM
+    LLM --> SQLGen
+
+    SQLGen --> SQLValidator
+    SQLValidator -->|SQL válida| Executor
+    SQLValidator -->|SQL inválida| Service
+
+    Executor --> DB
+    DB --> Executor
+    Executor --> Service
+    Service --> Controller
+    Controller --> Client
+
+---
 
 ## Tecnologias Utilizadas
 
