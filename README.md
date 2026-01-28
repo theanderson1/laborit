@@ -82,7 +82,7 @@ flowchart TD
     Executor --> Service
     Service --> Controller
     Controller --> Client
-
+```
 ---
 
 ## Tecnologias Utilizadas
