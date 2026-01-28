@@ -125,7 +125,7 @@ O projeto utiliza o **OpenRouter**, que permite acesso a modelos open‑source g
 Modelo padrão:
 
 ```
-meta-llama/llama-3.1-8b-instruct:free
+upstage/solar-pro-3:free
 ```
 
 A camada de LLM é **plugável**, podendo ser facilmente substituída por:
